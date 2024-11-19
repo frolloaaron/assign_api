@@ -1,0 +1,98 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Student {
+    id: ID!
+    name: String!
+}
+
+type Assignment {
+    id: ID!
+    teacher: String!
+    title: String!
+}
+
+type Score {
+    id : ID!
+    student: Student!
+    assignment: Assignment!
+    score: Int
+}
+
+
+
+type StudentResult {
+    success: Boolean!
+    errors: [String]
+    student: Student  
+}
+
+type StudentsResult {
+    success: Boolean!
+    errors: [String]
+    students: [Student] 
+}
+
+type DeleteStudentResult {
+    success: Boolean!
+    errors: [String]
+}
+
+type AssignmentResult {
+    success: Boolean!
+    errors: [String]
+    assignment: Assignment  
+}
+
+type AssignmentsResult {
+    success: Boolean!
+    errors: [String]
+    assignments: [Assignment] 
+}
+
+type DeleteAssignmentResult {
+    success: Boolean!
+    errors: [String]
+}
+
+type ScoreResult {
+    success: Boolean!
+    errors: [String]
+    score: Score  
+}
+
+type ScoresResult {
+    success: Boolean!
+    errors: [String]
+    scores: [Score] 
+}
+
+type DeleteScoreResult {
+    success: Boolean!
+    errors: [String]
+}
+
+
+
+
+
+type Query {
+    students: StudentsResult!
+    student(studentId: ID!): StudentResult!
+    assignments: AssignmentsResult!
+    assignment(assignmentId: ID!): AssignmentResult!
+    scores: ScoresResult!
+    scoresStudent(studentId: ID!): ScoresResult!
+}
+
+type Mutation {
+    createStudent(name: String!): StudentResult!
+    deleteStudent(studentId: ID!): DeleteStudentResult!
+    createAssignment(teacher: String!, title: String!): AssignmentResult!
+    deleteAssignment(assignmentId: ID!): DeleteAssignmentResult!
+    createScore(studentId: ID!, assignmentId: ID!, score: Int): ScoreResult!
+    setScore(scoreId: ID!, score: Int!): ScoreResult!
+    deleteScore(scoreId: ID!): DeleteScoreResult!
+}
