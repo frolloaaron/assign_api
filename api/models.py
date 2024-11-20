@@ -24,8 +24,8 @@ class Assignment(db.Model):
     
 class Score(db.Model):
     id = db.Column(db.Integer, primary_key = True)
-    student = db.Column(db.Integer, db.ForeignKey(Student.id))
-    assignment = db.Column(db.Integer, db.ForeignKey(Assignment.id))
+    student = db.Column(db.Integer, db.ForeignKey(Student.id, ondelete="CASCADE"))
+    assignment = db.Column(db.Integer, db.ForeignKey(Assignment.id, ondelete="CASCADE"))
     score = db.Column(db.Integer)
 
     def to_dict(self):
