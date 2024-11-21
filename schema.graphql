@@ -93,6 +93,6 @@ type Mutation {
     createAssignment(teacher: String!, title: String!): AssignmentResult!
     deleteAssignment(assignmentId: ID!): DeleteAssignmentResult!
     createScore(studentId: ID!, assignmentId: ID!, score: Int): ScoreResult!
-    setScore(scoreId: ID!, score: Int!): ScoreResult!
+    setScore(scoreId: ID!, newScore: Int!): ScoreResult!
     deleteScore(scoreId: ID!): DeleteScoreResult!
 }

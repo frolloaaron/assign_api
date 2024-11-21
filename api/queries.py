@@ -1,7 +1,7 @@
 from .models import Student, Assignment, Score
 from ariadne import convert_kwargs_to_snake_case
 
-#Student wquery resolvers
+#Student query resolvers
 def resolve_students(obj, info):
     try:
         students = [student.to_dict() for student in Student.query.all()]

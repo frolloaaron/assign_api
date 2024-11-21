@@ -101,3 +101,20 @@ def resolve_delete_score(obj, info, score_id):
         }   
 
     return payload
+
+@convert_kwargs_to_snake_case
+def resolve_set_score(obj, info, score_id, new_score):
+    try:
+        score = Score.query.get(score_id)
+        score.score = new_score
+        db.session.commit()
+        payload = {
+            "success": True,
+        }
+    except AttributeError:
+        payload = {
+            "success": False,
+            "errors": [f"Score matching id {score_id} not found"]
+        }   
+
+    return payload

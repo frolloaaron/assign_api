@@ -4,7 +4,7 @@ from ariadne import load_schema_from_path, make_executable_schema, graphql_sync,
 from ariadne.explorer import ExplorerGraphiQL
 from flask import request, jsonify
 from api.queries import resolve_students, resolve_student, resolve_assignment, resolve_assignments, resolve_scores, resolve_scores_student
-from api.mutations import resolve_create_student, resolve_delete_student, resolve_create_assignment, resolve_delete_assignment, resolve_create_score, resolve_delete_score
+from api.mutations import resolve_create_student, resolve_delete_student, resolve_create_assignment, resolve_delete_assignment, resolve_create_score, resolve_delete_score, resolve_set_score
 
 query = ObjectType("Query")
 query.set_field("students", resolve_students)
@@ -21,6 +21,7 @@ mutation.set_field("createAssignment", resolve_create_assignment)
 mutation.set_field("deleteAssignment", resolve_delete_assignment)
 mutation.set_field("createScore", resolve_create_score)
 mutation.set_field("deleteScore", resolve_delete_score)
+mutation.set_field("setScore", resolve_set_score)
 
 
 type_defs = load_schema_from_path("schema.graphql")
